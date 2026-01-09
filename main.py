@@ -14,7 +14,6 @@ class capm:
     def get_data(self):
         data={}
         for stock in self.stocks:
-
             ticker=yf.Ticker(stock)
             data[stock]=ticker.history(start=self.starting_date,end=self.ending_date)['Close']
         return pd.DataFrame(data)
@@ -65,4 +64,5 @@ v=s.var()
 sig=np.sqrt(v)
 x=np.linspace(m-3*sig,m+3*sig,100)
 plt.plot(x,norm.pdf(x,m,sig))
+
 plt.show()
